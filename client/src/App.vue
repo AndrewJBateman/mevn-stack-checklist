@@ -25,7 +25,7 @@
           v-model="editedDescription"
         />
         <p v-else class="column">
-          <span class="tag is-primary">{{ i + 1 }}</span>
+          <span class="tag is-secondary">{{ i + 1 }}</span>
           {{ item.description }}
         </p>
         <div class="column is-narrow">
@@ -68,7 +68,7 @@ export default {
       items: [],
       description: "",
       editedDescription: "",
-      selected: {},
+      selected: {}
     };
   },
   async mounted() {
@@ -78,7 +78,7 @@ export default {
   methods: {
     async addItem() {
       const response = await axios.post("api/checklistItems/", {
-        description: this.description,
+        description: this.description
       });
       this.items.push(response.data);
       this.description = "";
@@ -104,8 +104,8 @@ export default {
       });
       this.items[i] = response.data;
       this.unselect();
-    },
-  },
+    }
+  }
 };
 </script>
 
