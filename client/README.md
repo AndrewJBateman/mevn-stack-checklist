@@ -25,7 +25,7 @@
 
 ## :camera: Screenshots
 
-![Example screenshot](./img/api-cryptos.png)
+![Example screenshot](./img/mongodb.png)
 
 ## :signal_strength: Technologies
 
@@ -34,6 +34,8 @@
 * [Vue framework v2](https://vuejs.org/)
 * [Vue Router v3](https://router.vuejs.org/) the official router for Vue.js
 * [Vue CLI v4](https://cli.vuejs.org/)
+* [Material UI fonts and icons](https://material-ui.com/getting-started/installation/)
+* [Vuetify colors](https://vuetifyjs.com/en/styles/colors/#colors)
 * [Bulma v0.9.0](https://bulma.io/) CSS framework
 * [Axios v0.19.2](https://github.com/axios/axios), a promise-based http client, used to consume API data.
 * [Vue DevTools extension for Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
@@ -51,7 +53,6 @@
 
 * `npm run lint` to lint files
 * `npm run serve` to run server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
-
 
 **/ Backend:**
 
@@ -74,11 +75,11 @@
 ## :clipboard: Status & To-Do List
 
 * Status: Working.
-* To-Do: add functionality.
+* To-Do: add category and sort by category.
 
 ## :clap: Inspiration
 
-* []()
+* [Vue CLI Configuration Reference](https://cli.vuejs.org/config/#devserver-proxy)
 
 ## :envelope: Contact
 

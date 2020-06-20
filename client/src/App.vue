@@ -1,65 +1,79 @@
 <template>
   <div id="app">
+    <!--toolbar-->
+    <v-toolbar color="#E8EAF6">
+      <v-toolbar-title>Checklist Items</v-toolbar-title>
+      <v-spacer></v-spacer>
 
-    <!--Add items-->
-    <h1 class="subtitle has-text-centered">Checklist Items:</h1>
-    <hr />
-    <div class="field has-addons">
-      <div class="control is-expanded">
-        <input
-          class="input"
-          v-model="description"
-          type="text"
-          placeholder="Add an item"
-        />
-      </div>
-      <div class="control">
-        <a class="button is-info" @click="addItem" :disabled="!description"
-          >Add</a
-        >
-      </div>
-    </div>
+      <i class="material-icons">add</i>
+    </v-toolbar>
+    <v-card class="mx-auto" max-width="700">
+      <!--Add items-->
 
-    <!--List of items-->
-    <div class="notification" v-for="(item, i) in items" :key="item._id">
-      <div class="columns">
-        <input
-          class="column input"
-          v-if="isSelected(item)"
-          v-model="editedDescription"
-        />
-        <p v-else class="column">
-          <span class="tag is-dark">{{ i + 1 }}</span>
-          {{ item.description }}
-        </p>
-        <div class="column is-narrow">
-          <span
-            class="icon has-text-link"
-            @click="isSelected(item) ? unselect() : select(item)"
-          >
-            <i class="material-icons">{{
-              isSelected(item) ? "close" : "edit"
-            }}</i>
-          </span>
-
-          <span
-            class="icon has-text-danger"
-            @click="
-              isSelected(item) ? updateItem(item, i) : removeItem(item, i)
-            "
-          >
-            <i class="material-icons">{{
-              isSelected(item) ? "save" : "delete"
-            }}</i>
-          </span>
+      <!--List of items shown in v-cards-->
+      <v-container fluid>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input
+              class="input"
+              v-model="description"
+              type="text"
+              placeholder="Checklist item description..."
+              max-width="650"
+            />
+          </div>
+          <div class="control">
+            <a class="button is-info" @click="addItem" :disabled="!description"
+              ><i class="material-icons">note_add</i></a
+            >
+          </div>
         </div>
-      </div>
-    </div>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view /> -->
+        <v-col v-for="(item, i) in items" :key="item._id">
+          <v-card class="mx-auto">
+            <v-card-text>
+              <!--list item-->
+              <div class="columns">
+                <!--column 1-->
+                <input
+                  class="column input"
+                  v-if="isSelected(item)"
+                  v-model="editedDescription"
+                />
+                <p v-else class="column">
+                  <!-- <span class="tag is-dark">{{ i + 1 }}</span> -->
+                  {{ item.description }}
+                </p>
+                <!--column 2-->
+                <div class="column is-narrow">
+                  <span
+                    class="icon has-text-link"
+                    @click="isSelected(item) ? unselect() : select(item)"
+                  >
+                    <i class="material-icons">{{
+                      isSelected(item) ? "close" : "edit"
+                    }}</i>
+                  </span>
+
+                  <span
+                    class="icon has-text-danger"
+                    @click="
+                      isSelected(item)
+                        ? updateItem(item, i)
+                        : removeItem(item, i)
+                    "
+                  >
+                    <i class="material-icons">{{
+                      isSelected(item) ? "save" : "delete_forever"
+                    }}</i>
+                  </span>
+                </div>
+              </div>
+            </v-card-text>
+          </v-card>
+          <!--end of list item-->
+        </v-col>
+      </v-container>
+    </v-card>
   </div>
 </template>
 
@@ -72,7 +86,7 @@ export default {
       items: [],
       description: "",
       editedDescription: "",
-      selected: {}
+      selected: {},
     };
   },
   async mounted() {
@@ -82,7 +96,7 @@ export default {
   methods: {
     async addItem() {
       const response = await axios.post("api/checklistItems/", {
-        description: this.description
+        description: this.description,
       });
       this.items.push(response.data);
       this.description = "";
@@ -104,12 +118,12 @@ export default {
     },
     async updateItem(item, i) {
       const response = await axios.put("api/checklistItems/" + item._id, {
-        description: this.editedDescription
+        description: this.editedDescription,
       });
       this.items[i] = response.data;
       this.unselect();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -122,24 +136,4 @@ export default {
 .icon {
   cursor: pointer;
 }
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-} */
 </style>
