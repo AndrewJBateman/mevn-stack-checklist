@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+
+    <!--Add items-->
     <h1 class="subtitle has-text-centered">Checklist Items:</h1>
     <hr />
     <div class="field has-addons">
@@ -17,6 +19,8 @@
         >
       </div>
     </div>
+
+    <!--List of items-->
     <div class="notification" v-for="(item, i) in items" :key="item._id">
       <div class="columns">
         <input
@@ -25,12 +29,12 @@
           v-model="editedDescription"
         />
         <p v-else class="column">
-          <span class="tag is-secondary">{{ i + 1 }}</span>
+          <span class="tag is-dark">{{ i + 1 }}</span>
           {{ item.description }}
         </p>
         <div class="column is-narrow">
           <span
-            class="icon has-text-primary"
+            class="icon has-text-link"
             @click="isSelected(item) ? unselect() : select(item)"
           >
             <i class="material-icons">{{
@@ -39,7 +43,7 @@
           </span>
 
           <span
-            class="icon has-text-info"
+            class="icon has-text-danger"
             @click="
               isSelected(item) ? updateItem(item, i) : removeItem(item, i)
             "

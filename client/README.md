@@ -34,6 +34,7 @@
 * [Vue framework v2](https://vuejs.org/)
 * [Vue Router v3](https://router.vuejs.org/) the official router for Vue.js
 * [Vue CLI v4](https://cli.vuejs.org/)
+* [Bulma v0.9.0](https://bulma.io/) CSS framework
 * [Axios v0.19.2](https://github.com/axios/axios), a promise-based http client, used to consume API data.
 * [Vue DevTools extension for Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 
