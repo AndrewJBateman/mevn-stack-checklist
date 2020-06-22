@@ -86,7 +86,7 @@ export default {
       items: [],
       description: "",
       editedDescription: "",
-      selected: {},
+      selected: {}
     };
   },
   async mounted() {
@@ -96,7 +96,7 @@ export default {
   methods: {
     async addItem() {
       const response = await axios.post("api/checklistItems/", {
-        description: this.description,
+        description: this.description
       });
       this.items.push(response.data);
       this.description = "";
@@ -118,12 +118,12 @@ export default {
     },
     async updateItem(item, i) {
       const response = await axios.put("api/checklistItems/" + item._id, {
-        description: this.editedDescription,
+        description: this.editedDescription
       });
       this.items[i] = response.data;
       this.unselect();
-    },
-  },
+    }
+  }
 };
 </script>
 

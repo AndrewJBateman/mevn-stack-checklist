@@ -20,11 +20,12 @@
 
 ## :books: General info
 
-* Axios used to get API data.
-* Data displayed using one-way data-binding and a v-for loop.
+* Axios used to send/receive data from MongoDB backend
+* Data displayed using on a View frontend using data-binding and a v-for loop.
 
 ## :camera: Screenshots
 
+![Example screenshot](./img/frontend.png)
 ![Example screenshot](./img/mongodb.png)
 
 ## :signal_strength: Technologies
@@ -34,7 +35,7 @@
 * [Vue framework v2](https://vuejs.org/)
 * [Vue Router v3](https://router.vuejs.org/) the official router for Vue.js
 * [Vue CLI v4](https://cli.vuejs.org/)
-* [Material UI fonts and icons](https://material-ui.com/getting-started/installation/)
+* [Material UI icons](https://material.io/resources/icons/?style=baseline)
 * [Vuetify colors](https://vuetifyjs.com/en/styles/colors/#colors)
 * [Bulma v0.9.0](https://bulma.io/) CSS framework
 * [Axios v0.19.2](https://github.com/axios/axios), a promise-based http client, used to consume API data.
@@ -56,26 +57,37 @@
 
 **/ Backend:**
 
-* `npm run start` to ruyn node.js server
+* `npm run start` to run node.js server. Navigate to `http://localhost:3000/` to see JSON object with todos or an empty array. CRUD operations can be performed on this backend using the [Postman](https://www.postman.com/) API dev tool.
 
 **/ Full stack:**
 
-* `npm run dev` to run client and backend server concurrently
+* `npm run dev` to run client and backend server concurrently. Navigate to `http://localhost:8080/` to see frontend and `http://localhost:3000/` to see backend.
 
 ## :computer: Code Examples
 
-```javascript
+* POST route
 
+```javascript
+router.post("/", async (req, res) => {
+  const newChecklistItem = new ChecklistItem(req.body);
+  try {
+    const checklistItem = await newChecklistItem.save();
+    if (!checklistItem) throw new Error("Error saving checklist item");
+    res.status(200).json(checklistItem);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 ```
 
 ## :cool: Features
 
-* f
+* Front and backends can be run with one command using concurrently set up in package.json
 
 ## :clipboard: Status & To-Do List
 
 * Status: Working.
-* To-Do: add category and sort by category.
+* To-Do: Front: change vue-card layout, make into component, add category dropdown and sort by category. Add vuex state management. Unused nav views - use or delete.
 
 ## :clap: Inspiration
 
