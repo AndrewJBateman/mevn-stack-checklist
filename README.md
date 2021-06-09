@@ -43,7 +43,7 @@
 * [Material UI icons](https://material.io/resources/icons/?style=baseline)
 * [Vuetify colors](https://vuetifyjs.com/en/styles/colors/#colors)
 * [Bulma v0.9.2](https://bulma.io/) CSS framework via CDN
-* [Axios v0.21.1](https://github.com/axios/axios), a promise-based http client, used to consume API data.
+* [Axios v0.19.2](https://github.com/axios/axios), a promise-based http client, used to consume API data.
 * [Vue DevTools extension for Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 
 **Backend:**
@@ -58,11 +58,11 @@
 **/client Frontend:**
 
 * `npm run lint` to lint files
-* `npm run serve` to run server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files. Had to install webpack@4 (i.e. NOT webpack@5), uninstall sass-loader then run `npm install --save-dev sass-loader@10.1.1` and `npm i --legacy-peer-deps` to settle dependency issues. Lots of deprecation warnings during compile. Better to create a new Vue app than to update dependencies in this one.
+* `npm run serve` to run server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files. It was necessary to install webpack@4 (i.e. NOT webpack@5), uninstall sass-loader then run `npm install --save-dev sass-loader@10.1.1` and `npm i --legacy-peer-deps` to fix errors/dependency issues. Lots of deprecation warnings during compile. Better to create a new Vue app than to update dependencies in this one.
 
 **/ Backend:**
 
-* Create `.env` file and add `MONGO_URI` and `PORT` - as shown in `.env.example`
+* Create `.env` file and add `MONGO_URI` string and `PORT` number - as shown in `.env.example`
 * `npm run start` to run node.js server. Navigate to `http://localhost:3000/` to see JSON object with todos or an empty array. CRUD operations can be performed on this backend using the [Postman](https://www.postman.com/) API dev tool.
 
 **/ Full stack:**
